@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  spark-analysis:
+    build:
+      context: .
+      dockerfile: DockerFile
+    volumes:
+      - .:/app
+    working_dir: /app
+  
+  mongodb:
+    image: mongo:latest
+    container_name: weather_temperatures_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=cloud-user
+      - MONGO_INITDB_ROOT_PASSWORD=LetMeIn1234
+  
+volumes:
+  mongo_data:
