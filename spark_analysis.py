@@ -1,5 +1,8 @@
-import os
-os.environ['PYSPARK_PIN_THREAD'] = 'false'
+"""
+Author: Andre Martins (ID:0230991223)
+
+Script responsible for executing the first part of the assignment (Spark analysis)
+"""
 
 from pyspark.sql import SparkSession, Window
 from pyspark.sql.functions import col, row_number, avg, max, min
@@ -43,14 +46,14 @@ main_df = spark.read \
 
 start_time = time.time()
 
-print("-----------------------------------------------------------------------------------------------------")
+print("="*50)
 print("1. For all valid information (i.e. sensor quality >= 0.95), what is the average temperature per year?")
 
 filtered_df = main_df.filter(col("Sensor_quality") >= 0.95)
 
 average_temperature_per_year = filtered_df.groupBy("Year").avg("measured_temperature").orderBy("Year").show()
 
-print("-----------------------------------------------------------------------------------------------------")
+print("="*50)
 print("2. For every year in the dataset, find the station ID with the highest / lowest temperature.")
 
 print("MAX VALUES----------------->")
@@ -80,7 +83,7 @@ min_stations = main_df\
 
 min_stations.show()
 
-print("-----------------------------------------------------------------------------------------------------")
+print("="*50)
 print("3. For every year in the dataset, find the station ID with the highest maximal temperature for all stations with sensor quality >= 0.95.")
 
 max_temperatures_partition = Window.partitionBy("Year").orderBy(col("measured_temperature").desc())

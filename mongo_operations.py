@@ -1,12 +1,18 @@
-from pymongo import MongoClient
-import pandas
+"""
+Author: Andre Martins (ID:0230991223)
 
-from pyspark.sql import SparkSession, Window
+Script responsible for executing the second part of the assignment (MongoDB analysis)
+"""
+from pymongo import MongoClient
+
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, row_number, avg, max, min
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, FloatType, DoubleType
 import time
 
+# ----------------
 # Helper functions
+# ----------------
 
 def pretty_print_results(results, title="Query Results"):
     print(f"\n{'='*60}")
