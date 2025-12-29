@@ -3,6 +3,11 @@
 *Author: André Martins*  
 *ID: 0230991223*
 
+**External links:**
+
+- *Screencast video:* [YouTube](https://youtu.be/4bmBS_ocnxY)
+- *Github repo:* [GitHub](https://github.com/oliveira-andre-unilu/cloud-based-apps-hw2)
+
 # Project design
 
 All the execution of this small project is based on docker, more specifically in two separate containers. One container is responsible to run all the code (both for part one and part two of the project) and the other one contains a mongodb database used for all the mongodb operations.
